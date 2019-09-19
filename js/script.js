@@ -7,30 +7,100 @@ project 1 - A Random Quote Generator
 
 
 /*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
+  Create the array of quote objects and name it `quotes`
+  this wil be used to generate the random objects that will be displayed on the web page
+ 
 ***/
 
+var quotes = [
+  {
+    quote:"Until one has loved an animal , a part of one's soul remains unawakened",
+    source:"- Anotole France",
+    citation :'',
+    year:''
 
+},
+// Quote with citation and year as per instructions //
+{
+quote:"It is good to have an end to journey towards; but it is the journey that matters, in the end",
+  source:"- Ursula K.Le Guin, ",
+  citation :'The Left hand of Darkness',
+  year:'1969'
+
+},
+
+{
+  quote:"Difficulties strenghthen the mind, as labor does the body",
+    source:"- Lucius Annaeus Seneca",
+    citation :'',
+    year:''
+  
+  },
+  {
+    quote:"You must expect great things from yourself before you can do them ",
+      source:"- Micheal Jordon",
+      citation :'',
+      year:''
+    
+    },
+
+    {
+      quote:"The journey of a thousand miles begins with one step",
+        source:"-Lao Tzu",
+        citation :'',
+        year:''
+      
+      },
+
+      {
+        quote:"Not all those who wander are lost",
+          source:"J.R.R. Tolkien",
+          citation :'',
+          year:''
+        
+        },
+
+];
 
 
 /***
   Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
+ - Cse the random number to `return` a random quote object from the `quotes` array.
 ***/
 
 
+//- Create a variable to store a random number
 
+function getRandomQuote(){
+
+  // var randomQuote is used to store the random quotes, 
+  var randomQuote = Math.floor(Math.random() * (quotes.length) +1); 
+    return quotes [randomQuote];
+   
+}
+
+//stores the function into a variable so that it can be used dynamically 
+ var random = getRandomQuote();
+// Create html equal to an empty string
+var html = '';
+
+
+
+//Create the `printQuote` function to: 
+
+function printQuote () {
+
+html = '<p class="quote">'+  
+
+
+
+}
 
 /***
-  Create the `printQuote` function to: 
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
+  
+
+
+
    - Use the HTML template in the instructions or the markup in the index.html file, AND 
      the random quote vairable to build your HTML string.
    - Add the quote and source section to the HTML string.
@@ -39,7 +109,6 @@ project 1 - A Random Quote Generator
    - Don't forget to close that final `p` tag.
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
-
 
 
 
@@ -52,5 +121,3 @@ project 1 - A Random Quote Generator
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
