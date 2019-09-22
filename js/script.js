@@ -86,7 +86,7 @@ var html = '';
 html = '<p class="quote">' + random.quote + '<p>';
 html +=  '<p class ="source">' + random.source + '</p>';
 
-
+//conditinal statement to check for citation
 
 if (random.citation) {
 
@@ -95,13 +95,11 @@ if (random.citation) {
 
 };
 
+//conditinal statement to check for year
+
 if(random.year) {
 
-
-
-  html += '<span class="year>"' + random.year +'</span>';
-
-  
+ html += '<span class="year>"' + random.year +'</span>';
 
 };
 
@@ -111,39 +109,15 @@ document.getElementById('quote-box').innerHTML= html;
 return html;
 
 
-
 };
-
 
 
 printQuote();
 
-
+//set 
 
 window.timer = setInterval(printQuote,3000);
 
-//console.log(printQuote);
-/***
-  
 
-
-
-   - Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
-
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
