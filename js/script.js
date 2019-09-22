@@ -14,49 +14,41 @@ project 1 - A Random Quote Generator
 
 var quotes = [
   {
-    quote:"Until one has loved an animal , a part of one's soul remains unawakened",
-    source:"- Anotole France",
-    citation :'',
-    year:''
-
-},
-// Quote with citation and year as per instructions //
-{
-quote:"It is good to have an end to journey towards; but it is the journey that matters, in the end",
-  source:"- Ursula K.Le Guin, ",
-  citation :'The Left hand of Darkness',
-  year:'1969'
+    quote:'Until one has loved an animal a part of one\'s soul remains unawakened',
+    source:'Anotole France',    
 
 },
 
 {
-  quote:"Difficulties strenghthen the mind, as labor does the body",
-    source:"- Lucius Annaeus Seneca",
-    citation :'',
-    year:''
+quote:'It is good to have an end to journey towards; but it is the journey that matters, in the end',
+  source:'Ursula K.Le Guin, ',
+  citation:'The Left hand of Darkness',
+  year:1969,
+
+},
+
+{
+  quote:'Difficulties strenghthen the mind, as labor does the body',
+    source:' Lucius Annaeus Seneca',
+  
   
   },
   {
-    quote:"You must expect great things from yourself before you can do them ",
-      source:"- Micheal Jordon",
-      citation :'',
-      year:''
+    quote:'You must expect great things from yourself before you can do them ',
+      source:'- Micheal Jordon',
+     
     
     },
 
     {
-      quote:"The journey of a thousand miles begins with one step",
-        source:"-Lao Tzu",
-        citation :'',
-        year:''
-      
+      quote:'The journey of a thousand miles begins with one step',
+        source:'-Lao Tzu',
+     
       },
 
       {
-        quote:"Not all those who wander are lost",
-          source:"J.R.R. Tolkien",
-          citation :'',
-          year:''
+        quote:'Not all those who wander are lost',
+          source:'J.R.R. Tolkien',
         
         },
 
@@ -74,28 +66,63 @@ quote:"It is good to have an end to journey towards; but it is the journey that 
 function getRandomQuote(){
 
   // var randomQuote is used to store the random quotes, 
-  var randomQuote = Math.floor(Math.random() * (quotes.length) +1); 
+  var randomQuote = Math.floor(Math.random() * (quotes.length)); 
     return quotes [randomQuote];
    
 }
 
+
 //stores the function into a variable so that it can be used dynamically 
+ 
+
+//Create the `printQuote` function : 
+
+function printQuote () {
+//variable to store the functions created in getRandomQuote()
  var random = getRandomQuote();
 // Create html equal to an empty string
 var html = '';
 
-
-
-//Create the `printQuote` function to: 
-
-function printQuote () {
-
-html = '<p class="quote">'+  
+html = '<p class="quote">' + random.quote + '<p>';
+html +=  '<p class ="source">' + random.source + '</p>';
 
 
 
-}
+if (random.citation) {
 
+    html += '<span class="citation"' + random.citation +'</span>';
+
+
+};
+
+if(random.year) {
+
+
+
+  html += '<span class="year>"' + random.year +'</span>';
+
+  
+
+};
+
+html += '</p>';
+
+document.getElementById('quote-box').innerHTML= html;
+return html;
+
+
+
+};
+
+
+
+printQuote();
+
+
+
+window.timer = setInterval(printQuote,3000);
+
+//console.log(printQuote);
 /***
   
 
@@ -120,4 +147,3 @@ html = '<p class="quote">'+
 ***/
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
