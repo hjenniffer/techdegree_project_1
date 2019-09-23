@@ -14,14 +14,31 @@ project 1 - A Random Quote Generator
 
 var quotes = [
   {
-    quote:'Until one has loved an animal a part of one\'s soul remains unawakened',
-    source:'Anotole France',    
+    quote:'I do desire we may be better strangers',
+    source:'William Shakespeare',
+    citation:'As you like it',
+    category:'funny quotes',
+
+},
+
+{
+  quote:'Until one has loved an animal a part of one\'s soul remains unawakened',
+  source:'Anotole France',
+  tag: 'Animal lovers',
+  category:'postive quotes',
+
+},
+
+{
+  quote:'The pessimist sees difficulty in every opportunity. The optimist sees the opportunity in every difficulty.',
+  source:'Winston Churchill',
+  category:'inspirational quotes',
 
 },
 
 {
 quote:'It is good to have an end to journey towards; but it is the journey that matters, in the end',
-  source:'Ursula K.Le Guin, ',
+  source:'Ursula K.Le Guin',
   citation:'The Left hand of Darkness',
   year:1969,
 
@@ -35,14 +52,14 @@ quote:'It is good to have an end to journey towards; but it is the journey that 
   },
   {
     quote:'You must expect great things from yourself before you can do them ',
-      source:'- Micheal Jordon',
+      source:'Micheal Jordon',
      
     
     },
 
     {
       quote:'The journey of a thousand miles begins with one step',
-        source:'-Lao Tzu',
+        source:'Lao Tzu',
      
       },
 
@@ -69,11 +86,7 @@ function getRandomQuote(){
   var randomQuote = Math.floor(Math.random() * (quotes.length)); 
     return quotes [randomQuote];
    
-}
-
-
-//stores the function into a variable so that it can be used dynamically 
- 
+} 
 
 //Create the `printQuote` function : 
 
@@ -84,13 +97,13 @@ function printQuote () {
 var html = '';
 
 html = '<p class="quote">' + random.quote + '<p>';
-html +=  '<p class ="source">' + random.source + '</p>';
+html +=  '<p class ="source">' + random.source ;
 
 //conditinal statement to check for citation
 
 if (random.citation) {
 
-    html += '<span class="citation"' + random.citation +'</span>';
+    html += '<span class="citation">' + random.citation +'</span>';
 
 
 };
@@ -99,9 +112,26 @@ if (random.citation) {
 
 if(random.year) {
 
- html += '<span class="year>"' + random.year +'</span>';
+ html += '<span class="year">' + random.year +'</span>';
 
 };
+
+//conditinal statement to check for tag (part of extra credits)
+
+
+if(random.tag) {
+
+  html += '<span class="tag">' + random.tag +'</span>';
+ 
+ };
+
+ //conditinal statement to check for category (part of extra credits)
+
+ if(random.category) {
+
+  html += '<span class="category">' + random.category +'</span>';
+ 
+ };
 
 html += '</p>';
 
@@ -114,10 +144,28 @@ return html;
 
 printQuote();
 
-//set 
-
-window.timer = setInterval(printQuote,3000);
+//Create function to calculate random number 
 
 
+function randomColor(){
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+var color1 = Math.floor(Math.random()* 256);
+var color2 = Math.floor(Math.random() * 256);
+var color3 = Math.floor(Math.random() * 256);
+
+    var rgbRandom = 'rgb('+ color1 +', ' + color2 +' , '+ color3 +')';
+    document.body.style.background = rgbRandom;
+};
+
+
+
+//window.timer = setInterval(printQuote,3000);
+
+
+
+document.getElementById('loadQuote').addEventListener("click", printQuote,false);
+document.getElementById('loadQuote').addEventListener("click", randomColor,false);
+
+
+setInterval(function () 
+{document.getElementById('loadQuote').click();}, 20000);
